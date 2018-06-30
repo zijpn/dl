@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>Calculus</h1>
-    <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">playlist</a>
-    Total Duration: {{ totalDuration }}
-    <div id="chart"></div>
+    <h2>Calculus</h2>
+    <a target="_blank" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">playlist</a>
+    Total Duration: {{ duration }}
+    <div id="calculus_chart"></div>
      <ul v-for="item in items" :key="item.videoId">
       {{ item.title }}
       <a target="_blank" :href=thumbnail(item.videoId)>thumbnail</a> &nbsp;
@@ -13,14 +13,7 @@
 </template>
 
 <script>
-import c3 from 'c3'
-
-function formatDuration(seconds) {
-  let date = new Date(null)
-  date.setSeconds(seconds)
-  let timeString = date.toISOString().substr(11, 8)
-  return timeString
-}
+import { generateGraph, totalDuration } from '../utils'
 
 export default {
   name: 'Calculus',
@@ -91,12 +84,8 @@ export default {
     }
   },
   computed: {
-    totalDuration() {
-      let seconds = 0
-      for (let item of this.items) {
-        seconds += item.duration_in_seconds
-      }
-      return formatDuration(seconds)
+    duration() {
+      return totalDuration(this.items)
     }
   },
   methods: {
@@ -108,46 +97,7 @@ export default {
     }
   },
   mounted() {
-    c3.generate({
-      bindto: '#chart',
-      data: {
-        json: this.items,
-        keys: {
-          value: ['duration_in_seconds']
-        },
-        types:{
-          duration_in_seconds: 'bar'
-        },
-        colors: {
-          duration_in_seconds: '#dedede'
-        },
-        names: {
-          duration_in_seconds: 'Duration'
-        }
-      },
-      axis: {
-        x: {
-          tick: {
-            format: i => i+1
-          }
-        },
-        y: {
-          tick: {
-            format: seconds => formatDuration(seconds)
-          }
-        }
-      },
-      tooltip: {
-        format: {
-          title: i => this.items[i].title
-        }
-      },
-      bar:{
-        width: {
-          ratio: 0.7
-        }
-      }
-    })
+    generateGraph('#calculus_chart', this.items)
   }
 }
 </script>
