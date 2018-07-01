@@ -1,19 +1,15 @@
 <template>
   <div>
     <h2>Linear Algebra</h2>
-    <a target="_blank" href="https://www.youtube.com/playlist?list=PLDhVW-fewH3W4u7cSoMwDBxzEiB2Z84Ht">playlist</a>
-    Total Duration: {{ duration }}
+    <a class="button" target="_blank" href="https://www.youtube.com/playlist?list=PLDhVW-fewH3W4u7cSoMwDBxzEiB2Z84Ht">
+      Playlist {{ duration }}
+    </a>
     <div id="algebra_chart"></div>
-    <ul v-for="item in items" :key="item.videoId">
-      {{ item.title }}
-      <a target="_blank" :href=thumbnail(item.videoId)>thumbnail</a> &nbsp;
-      <a target="_blank" :href=video(item.videoId)>video</a>
-    </ul>
   </div>
 </template>
 
 <script>
-import { generateGraph, totalDuration } from '../utils'
+import { generateGraph, totalDuration, videoLink } from '../utils'
 
 export default {
   name: 'Algebra',
@@ -279,11 +275,8 @@ export default {
     }
   },
   methods: {
-    thumbnail(i) {
-      return `https://i.ytimg.com/vi/${i}/default.jpg`
-    },
-    video(i) {
-      return `https://www.youtube.com/watch?v=${i}`
+    video(id) {
+      return videoLink(id)
     }
   },
   mounted() {
@@ -291,6 +284,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>

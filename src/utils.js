@@ -18,9 +18,21 @@ export function totalDuration(data) {
   return formatDuration(seconds)
 }
 
+export function thumbnailLink(id) {
+  return `https://i.ytimg.com/vi/${id}/default.jpg`
+}
+
+export function videoLink(id) {
+  return `https://www.youtube.com/watch?v=${id}`
+}
+
 export function generateGraph(div, data) {
   c3.generate({
     bindto: div,
+    size: {
+      height: 240,
+      width: 640
+    },
     data: {
       json: data,
       keys: {
@@ -34,6 +46,11 @@ export function generateGraph(div, data) {
       },
       names: {
         duration_in_seconds: 'Duration'
+      },
+      onclick: function(d) {
+        // open video in new window
+        const url = videoLink(data[d.index].videoId)
+        window.open(url,'_blank')
       }
     },
     axis: {

@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <Algebra/>
-    <Calculus/>
+    <algebra/>
+    <calculus/>
+    <machine-learning/>
   </div>
 </template>
 
 <script>
 import Algebra from './components/Algebra.vue'
 import Calculus from './components/Calculus.vue'
+import MachineLearning from './components/MachineLearning.vue'
 
 export default {
   name: 'app',
   components: {
     Algebra,
-    Calculus
+    Calculus,
+    MachineLearning
   }
 }
 </script>
@@ -31,5 +34,22 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 </style>
