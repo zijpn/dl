@@ -3,6 +3,7 @@
     <algebra/>
     <calculus/>
     <machine-learning/>
+    <deep-learning/>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import Algebra from './components/Algebra.vue'
 import Calculus from './components/Calculus.vue'
 import MachineLearning from './components/MachineLearning.vue'
+import DeepLearning from './components/DeepLearning.vue'
 
 export default {
   name: 'app',
   components: {
     Algebra,
     Calculus,
-    MachineLearning
+    MachineLearning,
+    DeepLearning
   }
 }
 </script>
