@@ -2,8 +2,9 @@
   <div>
     <h2>Linear Algebra</h2>
     <a class="button" target="_blank" href="https://www.youtube.com/playlist?list=PLDhVW-fewH3W4u7cSoMwDBxzEiB2Z84Ht">
-      Playlist {{ duration }}
+      Playlist {{ duration }} 
     </a>
+    {{ duration15 }} @ 1.5 speed
     <div id="algebra_chart"></div>
   </div>
 </template>
@@ -271,7 +272,10 @@ export default {
   },
   computed: {
     duration() {
-      return totalDuration(this.items)
+      return totalDuration(this.items, 1)
+    },
+    duration15() {
+      return totalDuration(this.items, 1.5)
     }
   },
   methods: {

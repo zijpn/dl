@@ -10,10 +10,13 @@ export function formatDuration(seconds) {
   return `${hours}:${minutes}:${secs}`
 }
 
-export function totalDuration(data) {
+export function totalDuration(data, speed) {
   let seconds = 0
   for (let item of data) {
     seconds += item.duration_in_seconds
+  }
+  if (speed > 1) {
+    seconds /= speed
   }
   return formatDuration(seconds)
 }

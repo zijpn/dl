@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     duration() {
-      return totalDuration(this.items)
+      return totalDuration(this.items, 1)
     }
   },
   methods: {
