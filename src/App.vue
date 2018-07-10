@@ -2,6 +2,7 @@
   <div id="app">
     <algebra/>
     <calculus/>
+    <probability/>
     <machine-learning/>
     <deep-learning/>
   </div>
@@ -10,6 +11,7 @@
 <script>
 import Algebra from './components/Algebra.vue'
 import Calculus from './components/Calculus.vue'
+import Probability from './components/Probability.vue'
 import MachineLearning from './components/MachineLearning.vue'
 import DeepLearning from './components/DeepLearning.vue'
 
@@ -18,6 +20,7 @@ export default {
   components: {
     Algebra,
     Calculus,
+    Probability,
     MachineLearning,
     DeepLearning
   }
