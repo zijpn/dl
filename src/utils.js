@@ -29,12 +29,12 @@ export function videoLink(id) {
   return `https://www.youtube.com/watch?v=${id}`
 }
 
-export function generateGraph(div, data) {
+export function generateGraph(div, data, width) {
   c3.generate({
     bindto: div,
     size: {
       height: 240,
-      width: 640
+      width: width || 50 + data.length * 16
     },
     data: {
       json: data,
@@ -55,6 +55,9 @@ export function generateGraph(div, data) {
         const url = videoLink(data[d.index].videoId)
         window.open(url,'_blank')
       }
+    },
+    legend: {
+      show: false
     },
     axis: {
       x: {

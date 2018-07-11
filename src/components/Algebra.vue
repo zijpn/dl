@@ -1,11 +1,28 @@
 <template>
   <div>
     <h2>Linear Algebra</h2>
-    <a class="button" target="_blank" href="https://www.youtube.com/playlist?list=PLDhVW-fewH3W4u7cSoMwDBxzEiB2Z84Ht">
-      Playlist {{ duration }} 
-    </a>
-    {{ duration15 }} @ 1.5 speed
-    <div id="algebra_chart"></div>
+    <table class="center">
+      <tr>
+        <td>
+          <a target="_blank" href="https://www.amazon.com/Introduction-Linear-Algebra-Gilbert-Strang/dp/0980232775">
+            <img src="../assets/algebra.jpg" style="height: 160px">
+          </a>
+        </td>
+        <td>
+          <a class="button" target="_blank" href="https://www.youtube.com/playlist?list=PLDhVW-fewH3W4u7cSoMwDBxzEiB2Z84Ht">
+            Playlist {{ duration }} 
+          </a>
+          {{ duration15 }} @ 1.5 speed
+          <div id="algebra_chart1"></div>
+        </td>
+        <td>
+          <a class="button" target="_blank" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">
+            Playlist {{ duration2 }} 
+          </a>
+          <div id="algebra_chart2"></div>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -16,7 +33,7 @@ export default {
   name: 'Algebra',
   data() {
     return {
-      items: [
+      items1: [
         {
           "title": "MIT 18.06 Lec 1 The Geometry of Linear Equations",
           "videoId": "ZK3O402wf1c",
@@ -191,7 +208,9 @@ export default {
           "title": "MIT 18.06 Lec 34 Final Course Review",
           "videoId": "RWvi4Vx4CDc",
           "duration_in_seconds": 2606
-        },
+        }
+      ],
+      items2: [
         {
           "title": "Essence of linear algebra preview",
           "videoId": "kjBOesZCoqc",
@@ -272,11 +291,14 @@ export default {
   },
   computed: {
     duration() {
-      return totalDuration(this.items, 1)
+      return totalDuration(this.items1, 1)
     },
     duration15() {
-      return totalDuration(this.items, 1.5)
-    }
+      return totalDuration(this.items1, 1.5)
+    },
+    duration2() {
+      return totalDuration(this.items2, 1)
+    },
   },
   methods: {
     video(id) {
@@ -284,7 +306,8 @@ export default {
     }
   },
   mounted() {
-    generateGraph('#algebra_chart', this.items)
+    generateGraph('#algebra_chart1', this.items1)
+    generateGraph('#algebra_chart2', this.items2)
   }
 }
 </script>

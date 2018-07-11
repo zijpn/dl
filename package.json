@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:dist": "serve -s dist",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build; push-dir --dir=dist --branch=gh-pages --cleanup"
@@ -18,6 +19,7 @@
     "@vue/cli-service": "^3.0.0-rc.3",
     "eslint": "^5.0.1",
     "push-dir": "^0.4.1",
+    "serve": "^9.2.0",
     "vue-template-compiler": "^2.5.16"
   },
   "browserslist": [
